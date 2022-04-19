@@ -1,0 +1,6 @@
+C:\Users\rberh\OneDrive\Masaüstü\1091000\Projects\LibraryManagementSystemProject\ProjectFile\LibraryManagementSystem\LibraryManagementSystem.Entities\bin\Debug\LibraryManagementSystem.Entities.dll
+C:\Users\rberh\OneDrive\Masaüstü\1091000\Projects\LibraryManagementSystemProject\ProjectFile\LibraryManagementSystem\LibraryManagementSystem.Entities\bin\Debug\LibraryManagementSystem.Entities.pdb
+C:\Users\rberh\OneDrive\Masaüstü\1091000\Projects\LibraryManagementSystemProject\ProjectFile\LibraryManagementSystem\LibraryManagementSystem.Entities\obj\Debug\LibraryManagementSystem.Entities.csproj.AssemblyReference.cache
+C:\Users\rberh\OneDrive\Masaüstü\1091000\Projects\LibraryManagementSystemProject\ProjectFile\LibraryManagementSystem\LibraryManagementSystem.Entities\obj\Debug\LibraryManagementSystem.Entities.csproj.CoreCompileInputs.cache
+C:\Users\rberh\OneDrive\Masaüstü\1091000\Projects\LibraryManagementSystemProject\ProjectFile\LibraryManagementSystem\LibraryManagementSystem.Entities\obj\Debug\LibraryManagementSystem.Entities.dll
+C:\Users\rberh\OneDrive\Masaüstü\1091000\Projects\LibraryManagementSystemProject\ProjectFile\LibraryManagementSystem\LibraryManagementSystem.Entities\obj\Debug\LibraryManagementSystem.Entities.pdb
