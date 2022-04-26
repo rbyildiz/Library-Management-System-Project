@@ -37,7 +37,15 @@ namespace LibraryManagementSystem.WinFormUI
                 if (book != null)
                 {
                     // Verilerin gosterilemesi
-                    pbxImage.Image = Image.FromFile(book.BookImagePath);
+                    try
+                    {
+                        pbxImage.Image = Image.FromFile(book.BookImagePath);
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        string imgPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Images\null.png";
+                        pbxImage.Image = Image.FromFile(imgPath);
+                    }
                     lblImagePath.Text = book.BookImagePath;
                     txtName.Text = book.BookName;
                     dtpPublicationYear.Value = new DateTime(book.BookPublicationYear, 01, 01);
