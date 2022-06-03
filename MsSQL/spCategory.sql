@@ -2,8 +2,7 @@ USE LibraryDB
 GO
 -- Category Stored Procedures
 -- INSERT - Category
-CREATE PROCEDURE [Product].[uspInsertCategory]	@Name VARCHAR(30),
-												@Active BIT
+CREATE PROCEDURE [Product].[uspInsertCategory]	@Name VARCHAR(30), Active BIT
 AS
 BEGIN
 	INSERT INTO Categories
@@ -11,9 +10,7 @@ BEGIN
 END
 GO
 -- UPDATE - Category
-CREATE PROC [Product].[uspUpdateCategory]  @Id INT,
-										   @Name VARCHAR(30),
-										   @Active BIT
+CREATE PROC [Product].[uspUpdateCategory]  @Id INT, @Name VARCHAR(30), @Active BIT
 AS
 BEGIN
 	UPDATE Categories 
@@ -32,9 +29,7 @@ END
 GO
 -----------------------
 -- Category GET
-CREATE PROC [Product].[uspGetCategory] @Id INT,
-										@Name VARCHAR(30) OUT,
-										@Active BIT OUTPUT
+CREATE PROC [Product].[uspGetCategory] @Id INT, @Name VARCHAR(30) OUT, @Active BIT OUTPUT
 AS
 BEGIN
 	SELECT @Name = CategoryName, @Active = Active
