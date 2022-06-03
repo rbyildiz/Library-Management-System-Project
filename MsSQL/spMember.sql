@@ -3,11 +3,11 @@ GO
 -- Member Stored Procedures
 -- INSERT - Member
 CREATE PROC [Person].[uspInsertMember]  @FirstName VARCHAR(30),
-										@LastName VARCHAR(30),
-										@PhoneNumber VARCHAR(13),
-										@Email VARCHAR(40),
-										@Address VARCHAR(300),
-										@Active BIT
+					@LastName VARCHAR(30),
+					@PhoneNumber VARCHAR(13),
+					@Email VARCHAR(40),
+					@Address VARCHAR(300),
+					@Active BIT
 AS
 BEGIN
 	INSERT INTO Members 
@@ -16,20 +16,20 @@ END
 GO
 -- UPDATE - Member
 CREATE PROC [Person].[uspUpdateMember]  @Id INT,
-										@FirstName VARCHAR(30),
-										@LastName VARCHAR(30),
-										@PhoneNumber VARCHAR(13),
-										@Email VARCHAR(40),
-										@Address VARCHAR(300),
-										@Active BIT
+					@FirstName VARCHAR(30),
+					@LastName VARCHAR(30),
+					@PhoneNumber VARCHAR(13),
+					@Email VARCHAR(40),
+					@Address VARCHAR(300),
+					@Active BIT
 AS
 BEGIN
 	UPDATE Members SET  MemberFirstName = @FirstName,
-						MemberLastName = @LastName,
-						MemberPhoneNumber = @PhoneNumber,
-						MemberEmail = @Email,
-						MemberAddress = @Address,
-						Active = @Active
+			    MemberLastName = @LastName,
+			    MemberPhoneNumber = @PhoneNumber,
+			    MemberEmail = @Email,
+			    MemberAddress = @Address,
+			    Active = @Active
 	WHERE Id = @Id
 END
 GO
