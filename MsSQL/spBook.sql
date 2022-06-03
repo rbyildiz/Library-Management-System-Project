@@ -4,13 +4,13 @@ GO
 -- Book SP
 -- INSERT - BOOK
 CREATE PROC [Product].[uspInsertBook]	@BookName VARCHAR(30),
-										@AuthorID INT,
-										@BookPublicationYear INT,
-										@BookSummary VARCHAR(500),
-										@BookImagePath VARCHAR(100),
-										@BookLanguage VARCHAR(30),
-										@CategoryID INT,
-										@Active BIT
+					@AuthorID INT,
+					@BookPublicationYear INT,
+					@BookSummary VARCHAR(500),
+					@BookImagePath VARCHAR(100),
+					@BookLanguage VARCHAR(30),
+					@CategoryID INT,
+					@Active BIT
 AS
 BEGIN
 	INSERT INTO Books
@@ -27,23 +27,23 @@ END
 GO
 -- UPDATE - BOOK
 CREATE PROC [Product].[uspUpdateBook]	@Id INT,
-										@BookName VARCHAR(30),
-										@AuthorID INT,
-										@BookPublicationYear INT,
-										@BookSummary VARCHAR(500),
-										@BookImagePath VARCHAR(100),
-										@BookLanguage VARCHAR(30),
-										@CategoryID INT,
-										@Active BIT
+					@BookName VARCHAR(30),
+					@AuthorID INT,
+					@BookPublicationYear INT,
+					@BookSummary VARCHAR(500),
+					@BookImagePath VARCHAR(100),
+					@BookLanguage VARCHAR(30),
+					@CategoryID INT,
+					@Active BIT
 AS
 BEGIN
 	UPDATE Books SET BookName = @BookName,	AuthorID = @AuthorID,
-					 BookPublicationYear = @BookPublicationYear,
-					 BookSummary = @BookSummary,
-					 BookImagePath = @BookImagePath,
-					 BookLanguage = @BookLanguage,
-					 CategoryID = @CategoryID,
-					 Active = @Active
+			 BookPublicationYear = @BookPublicationYear,
+			 BookSummary = @BookSummary,
+			 BookImagePath = @BookImagePath,
+			 BookLanguage = @BookLanguage,
+			 CategoryID = @CategoryID,
+			 Active = @Active
 	WHERE Id = @Id
 END
 GO
@@ -53,9 +53,9 @@ RETURNS NVARCHAR(MAX)
 AS
 BEGIN
 	RETURN( SELECT Books.Id, Books.BookName, Books.BookPublicationYear,
-					Books.BookSummary, Books.BookImagePath, Books.BookLanguage, CategoryID, AuthorID, Books.Active,
-					JSON_QUERY((SELECT * FROM Categories WHERE Categories.Id = Books.CategoryID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Category,
-					JSON_QUERY((SELECT * FROM [Person].[Authors] WHERE Authors.Id = Books.AuthorID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Author
+			Books.BookSummary, Books.BookImagePath, Books.BookLanguage, CategoryID, AuthorID, Books.Active,
+			JSON_QUERY((SELECT * FROM Categories WHERE Categories.Id = Books.CategoryID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Category,
+			JSON_QUERY((SELECT * FROM [Person].[Authors] WHERE Authors.Id = Books.AuthorID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Author
 			FROM [Product].[Books]
 			INNER JOIN [Product].[Categories] AS Category
 			ON Category.Id = [Product].[Books].CategoryID
@@ -71,9 +71,9 @@ RETURNS NVARCHAR(MAX)
 AS
 BEGIN
 	RETURN( SELECT Books.Id, Books.BookName, Books.BookPublicationYear,
-					Books.BookSummary, Books.BookImagePath, Books.BookLanguage, CategoryID, AuthorID, Books.Active,
-					JSON_QUERY((SELECT * FROM Categories WHERE Categories.Id = Books.CategoryID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Category,
-					JSON_QUERY((SELECT * FROM [Person].[Authors] WHERE Authors.Id = Books.AuthorID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Author
+			Books.BookSummary, Books.BookImagePath, Books.BookLanguage, CategoryID, AuthorID, Books.Active,
+			JSON_QUERY((SELECT * FROM Categories WHERE Categories.Id = Books.CategoryID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Category,
+			JSON_QUERY((SELECT * FROM [Person].[Authors] WHERE Authors.Id = Books.AuthorID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Author
 			FROM [Product].[Books]
 			INNER JOIN [Product].[Categories] AS Category
 			ON Category.Id = [Product].[Books].CategoryID
@@ -88,10 +88,10 @@ CREATE FUNCTION [Product].[FindBook](@Name VARCHAR(30))
 RETURNS NVARCHAR(MAX)
 AS
 BEGIN
-		RETURN( SELECT Books.Id, Books.BookName, Books.BookPublicationYear,
-					Books.BookSummary, Books.BookImagePath, Books.BookLanguage,CategoryID, AuthorID, Books.Active,
-					JSON_QUERY((SELECT * FROM Categories WHERE Categories.Id = Books.CategoryID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Category,
-					JSON_QUERY((SELECT * FROM [Person].[Authors] WHERE Authors.Id = Books.AuthorID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Author
+		RETURN( SELECT  Books.Id, Books.BookName, Books.BookPublicationYear,
+				Books.BookSummary, Books.BookImagePath, Books.BookLanguage,CategoryID, AuthorID, Books.Active,
+			JSON_QUERY((SELECT * FROM Categories WHERE Categories.Id = Books.CategoryID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Category,
+			JSON_QUERY((SELECT * FROM [Person].[Authors] WHERE Authors.Id = Books.AuthorID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Author
 			FROM [Product].[Books]
 			INNER JOIN [Product].[Categories] AS Category
 			ON Category.Id = [Product].[Books].CategoryID
