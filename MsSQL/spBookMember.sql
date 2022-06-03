@@ -39,16 +39,16 @@ RETURNS NVARCHAR(MAX)
 AS
 BEGIN
 	RETURN(	SELECT  BookMembers.Id, BookMembers.BookID, BookMembers.MemberID, Book.BookName, Member.MemberFirstName,
-					BookMembers.BookMemberRentalDate, 
-					BookMembers.BookMemberLeaseEndDate, BookMembers.Active
-			FROM BookMembers
-			INNER JOIN [Product].[Books] AS Book
-			ON Book.Id = BookMembers.BookID
-			INNER JOIN [Person].[Members] AS Member
-			ON Member.Id = BookMembers.MemberID
-			WHERE Book.BookName LIKE '%' + @Name + '%' OR 
-				  Member.MemberFirstName LIKE '%' + @Name + '%'
-			FOR JSON PATH)
+				BookMembers.BookMemberRentalDate, 
+				BookMembers.BookMemberLeaseEndDate, BookMembers.Active
+		FROM BookMembers
+		INNER JOIN [Product].[Books] AS Book
+		ON Book.Id = BookMembers.BookID
+		INNER JOIN [Person].[Members] AS Member
+		ON Member.Id = BookMembers.MemberID
+		WHERE Book.BookName LIKE '%' + @Name + '%' OR 
+			  Member.MemberFirstName LIKE '%' + @Name + '%'
+		FOR JSON PATH)
 END
 GO
 --------------
@@ -58,15 +58,15 @@ RETURNS NVARCHAR(MAX)
 AS
 BEGIN
 	RETURN( SELECT  BookMembers.Id, BookMembers.BookID, BookMembers.MemberID, BookMembers.BookMemberRentalDate, BookMembers.BookMemberLeaseEndDate, BookMembers.Active,
-					JSON_QUERY((SELECT * FROM [Product].[Books] WHERE [Product].[Books].Id = Book.Id FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Books,
-					JSON_QUERY((SELECT * FROM [Person].[Members] WHERE [Person].[Members].Id = Member.Id FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Members
-			FROM [Product].[BookMembers]
-			INNER JOIN [Product].[Books] AS Book
-			ON Book.Id = BookMembers.BookID
-			INNER JOIN [Person].[Members] AS Member
-			ON Member.Id = BookMembers.MemberID
-			WHERE [Product].[BookMembers].Active = @Active
-			FOR JSON PATH)
+				JSON_QUERY((SELECT * FROM [Product].[Books] WHERE [Product].[Books].Id = Book.Id FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Books,
+				JSON_QUERY((SELECT * FROM [Person].[Members] WHERE [Person].[Members].Id = Member.Id FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Members
+		FROM [Product].[BookMembers]
+		INNER JOIN [Product].[Books] AS Book
+		ON Book.Id = BookMembers.BookID
+		INNER JOIN [Person].[Members] AS Member
+		ON Member.Id = BookMembers.MemberID
+		WHERE [Product].[BookMembers].Active = @Active
+		FOR JSON PATH)
 END
 GO
 ----------------
@@ -76,14 +76,14 @@ RETURNS NVARCHAR(MAX)
 AS
 BEGIN
 	RETURN( SELECT  BookMembers.Id, BookMembers.BookID, BookMembers.MemberID, BookMembers.BookMemberRentalDate, BookMembers.BookMemberLeaseEndDate, BookMembers.Active,
-					JSON_QUERY((SELECT * FROM [Product].[Books] WHERE [Product].[Books].Id = Book.Id FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Books,
-					JSON_QUERY((SELECT * FROM [Person].[Members] WHERE [Person].[Members].Id = Member.Id FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Members
-			FROM [Product].[BookMembers]
-			INNER JOIN [Product].[Books] AS Book
-			ON Book.Id = BookMembers.BookID
-			INNER JOIN [Person].[Members] AS Member
-			ON Member.Id = BookMembers.MemberID
-			WHERE [Product].[BookMembers].Id = @Id
-			FOR JSON PATH)
+				JSON_QUERY((SELECT * FROM [Product].[Books] WHERE [Product].[Books].Id = Book.Id FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Books,
+				JSON_QUERY((SELECT * FROM [Person].[Members] WHERE [Person].[Members].Id = Member.Id FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS Members
+		FROM [Product].[BookMembers]
+		INNER JOIN [Product].[Books] AS Book
+		ON Book.Id = BookMembers.BookID
+		INNER JOIN [Person].[Members] AS Member
+		ON Member.Id = BookMembers.MemberID
+		WHERE [Product].[BookMembers].Id = @Id
+		FOR JSON PATH)
 END
 GO
