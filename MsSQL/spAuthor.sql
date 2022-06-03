@@ -2,9 +2,9 @@ USE LibraryDB
 GO
 -- Author SP
 -- INSERT - AUTHOR
-CREATE PROC [Person].[uspInsertAuthor] @FirstName VARCHAR(30),
-										@LastName VARCHAR(30),
-										@Active BIT
+CREATE PROC [Person].[uspInsertAuthor] 	@FirstName VARCHAR(30),
+					@LastName VARCHAR(30),
+					@Active BIT
 AS
 BEGIN
 	INSERT INTO Authors 
@@ -12,15 +12,15 @@ BEGIN
 END
 GO
 -- UPDATE - AUTHOR
-CREATE PROC [Person].[uspUpdateAuthor] @Id INT,
-										@FirstName VARCHAR(30),
-										@LastName VARCHAR(30),
-										@Active BIT
+CREATE PROC [Person].[uspUpdateAuthor] 	@Id INT,
+					@FirstName VARCHAR(30),
+					@LastName VARCHAR(30),
+					@Active BIT
 AS
 BEGIN
 	UPDATE Authors SET AuthorFirstName = @FirstName, 
-						AuthorLastName = @LastName,
-						Active = @Active
+			   AuthorLastName = @LastName,
+			   Active = @Active
 	WHERE Id = @Id
 END
 GO
